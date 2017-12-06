@@ -1,0 +1,19 @@
+.display-inline {
+	display: inline;
+	list-style: none;
+	font-size: 24px;
+}
+
+.center {
+	text-align: center;
+}
+
+body {
+	background-image: url('../images/cinema.jpg');
+	background-size: cover;
+}
+#play {text-align: center;
+		}
+
+h3 {font-size: 12px}
+
