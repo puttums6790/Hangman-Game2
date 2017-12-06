@@ -13,7 +13,7 @@ var GuessesId = document.getElementById('Guesses');
 var remainingId = document.getElementById('remaining');
 var gameStatusId = document.getElementById('gameStatus');
 
-// Store letter on key up and run functions
+
 document.onkeyup = function(event) {
     letter = String.fromCharCode(event.keyCode).toLowerCase();
     if (hangman.checkAlphabet() === true) {
@@ -42,9 +42,9 @@ document.onkeyup = function(event) {
     } 
 }
 
-// Hangman game as an object
+
 var hangman = {
-	// Starts a new game
+	
 	play: function () {
 		var blanksId = document.getElementById('blank');
 		blanksId.parentNode.removeChild(blanksId);
@@ -65,7 +65,7 @@ var hangman = {
 		}
 	},
 
-	// Checks alphabet array
+	
 	checkAlphabet: function() {
 		for (var i = 0; i < alphabet.length; i++) {
 			if (letter === alphabet[i]) {
@@ -75,7 +75,7 @@ var hangman = {
 		return false;
 	},
 
-	// Checks whether letter has been used
+	
 	checkGuesses: function() {
 		for (var i = 0; i < Guesses.length; i++) {
 			if (letter === Guesses[i]) {
@@ -85,7 +85,7 @@ var hangman = {
 		return true;
 	},
 
-	// Check if letter is in the working word
+	
 	checkWorkingWord: function() {
 		for (var i = 0; i < workingWord.length; i++) {
 			if (letter === workingWord[i]) {
@@ -95,7 +95,7 @@ var hangman = {
 		return true;
 	},
 
-	// Checks if letter is in the answer
+	
 	checkword: function() {
 		var wasFound = false;
 		for (var i = 0; i < word.length; i++) {
@@ -107,7 +107,7 @@ var hangman = {
 		return wasFound;
 	},
 
-	// Re-writes display of current word with letters and blanks
+	
 	replaceLetter: function() {
 		for (var i = 0; i < workingWord.length; i++) {
 			var blanksId = document.getElementById('blank');
@@ -122,13 +122,13 @@ var hangman = {
 		}
 	},
 
-	// Subtracts 1 from remaining number of guesses
+	
 	subtractRemaining: function() {	
 		guessesRemaining -= 1;
 		Guesses.push(letter);
 	},
 
-	// updates remaining guesses left in DOM
+	
 	updateRemaining: function() {
 		var livesId = document.getElementById('lives');
 		livesId.parentNode.removeChild(livesId);
@@ -139,7 +139,7 @@ var hangman = {
 		remainingId.appendChild(newScore);
 	},
 
-	// updates div containing previously used letters with new letter
+	
 	updateUsedLetters: function() {
 		var newLetter = document.createElement('li');
 		newLetter.innerHTML = letter;
@@ -148,7 +148,7 @@ var hangman = {
 		GuessesId.appendChild(newLetter);
 	},
 
-	// Updates game status to win
+	
 	winStatus: function() {
 		var isComplete = true;
 		for (var i = 0; i < word.length; i++) {
@@ -170,7 +170,7 @@ var hangman = {
 		return false;
 	},
 
-	// Updates win counter
+	//NEED TO MOVE "YOU WON!" OVER
 	winCounter: function() {
 		var winCounterId = document.getElementById('winCounter');
 		winCounterId.parentNode.removeChild(winCounterId);
@@ -181,7 +181,7 @@ var hangman = {
 		winsId.appendChild(newWinCounter);
 	},
 
-	// Updates game status to game over
+	
 	lose: function() {
 		if (guessesRemaining < 1) {
 			var playId = document.getElementById('play');
@@ -196,7 +196,7 @@ var hangman = {
 		return false;
 	},
 
-	// Resets game variables, and updates DOM
+	
 	resetGame: function() {
 			for (var i = 0; i < word.length; i++) {	
 				var blanksId = document.getElementById('blank');
@@ -221,5 +221,5 @@ var hangman = {
 	},
 }
 
-// Start game
+
 hangman.play();
